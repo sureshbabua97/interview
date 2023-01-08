@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <title>Success Page</title>
+    </head>
+    <body>
+        <referenceBlock name="checkout.success">
+            <action method="setTemplate">
+                <argument name="template" xsi:type="string">Interview_Task::success.phtml</argument>
+            </action>
+            <arguments>
+                <argument name="view_model" xsi:type="object">Interview\Task\ViewModel\CustomViewModel</argument>
+            </arguments>
+        </referenceBlock>
+    </body>
+</page>
+

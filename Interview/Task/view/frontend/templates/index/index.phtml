@@ -1,0 +1,58 @@
+<div id="modal-content" style="display:none">
+    <div class="modal-inner-content">
+       <form id="customform" action="#">
+            <label for="fname">First name:</label>
+            <input type="text" id="fname" name="fname" value="John"><br>
+            <label for="lname">Last name:</label>
+            <input type="text" id="lname" name="lname" value="Doe"><br><br>
+            <input type="submit" value="Submit">
+        </form> 
+    </div>
+</div>
+
+<script>
+    require(
+        [
+            'jquery',
+            'Magento_Ui/js/modal/modal',
+            'Magento_Catalog/js/catalog-add-to-cart'
+        ],
+        function(
+            $,
+            modal,
+            catalog
+        ) {
+            var options = {
+                type: 'popup',
+                responsive: true,
+                innerScroll: true,
+                title: 'custom form',
+            };
+            var popup = modal(options, $('#modal-content'));
+            
+            
+            $("#customform").submit(function(e){
+                e.preventDefault();
+
+                firstname = $('#fname').val();
+                lastname = $('#lname').val();
+
+                $.cookie('first_name', firstname);
+                $.cookie('last_name', lastname);
+                $('#modal-content').modal('closeModal');
+                if(window.customform) {
+                    $('form[data-product-sku='+window.customform.data().productSku+']').submit();
+                }
+            });
+
+            $('#modal-content').data('mage-modal').modal.on('modalclosed', function(){
+                if($.cookie('first_name') && $.cookie('last_name')) {
+
+                }else{
+                    $('#modal-content').modal('openModal');
+                }
+            });
+
+        }  
+    );
+</script>

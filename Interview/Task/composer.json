@@ -1,0 +1,21 @@
+{
+    "name": "interview/module-task",
+    "description": "Interview_Task",
+    "type": "magento2-module",
+    "license": "GPL-3.0",
+    "authors": [
+        {
+            "name": "Interview_Task"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Interview\\Task\\": ""
+        }
+    }
+}
